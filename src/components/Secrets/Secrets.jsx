@@ -23,7 +23,7 @@ const secrets = [
 const Secrets = () => {
     return (
         <div className={styles.container}>
-            <h2>Secrets...</h2>
+            <h2>Clues...</h2>
             <ul className={styles.secrets}>
                 {secrets.map((secret, index) => {
                     return (

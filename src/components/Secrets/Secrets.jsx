@@ -27,14 +27,12 @@ const Secrets = () => {
             <ul className={styles.secrets}>
                 {secrets.map((secret, index) => {
                     return (
-                        <li key={index}>
-                            <Link key={index} href={`/code?id=${index}`}>
-                                <div>
-                                    <h4>{secret.locked ? '🔒 ' : ''}Clue #{index+1}</h4>
-                                    <p className={secret.locked ? styles.text__blur : ''}>{secret.clue}</p>
-                                </div>
-                            </Link>
-                        </li>
+                        <Link key={index} href={`/code?id=${index}`}>
+                            <li key={index}>
+                                <h4>{secret.locked ? '🔒 ' : ''}Clue #{index+1}</h4>
+                                <p className={secret.locked ? styles.text__blur : ''}>{secret.clue}</p>
+                            </li>
+                        </Link>
                     )
                 })}
             </ul>

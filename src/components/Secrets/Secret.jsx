@@ -4,7 +4,6 @@ import styles from '../../../styles/Secret.module.css'
 
 const Secret = () => {
     const [code, setCode] = useState('');
-    const [secret, setSecret] = useState('');
     const router = useRouter();
     const { id } = router.query;
 
@@ -17,29 +16,31 @@ const Secret = () => {
         localStorage.setItem('suspects', JSON.stringify(suspects));
     };
 
-    const checkSecret = async () => {
+    const checkSecret = async (newCode) => {
         try {
-            const response = await fetch(`./api/secret?id=${id}&code=${code}`);
+            const response = await fetch(`./api/secret?id=${id}&code=${newCode}`);
             if (!response.ok) {
                 throw Error();
             }
-            const json = await response.json();
-            setSecret(json.secret);
-            storeLocally(json.secret);
+            const { secret } = await response.json();
+            storeLocally(secret);
+            if (!alert(secret)) {
+                router.push('/');
+            }
         } catch (error) {
-            console.error(error);
+            alert('Incorrect code');
+            setCode('');
         }
     };
 
     const pressNum = (e) => {
         const pressedNum = e.currentTarget.textContent;
         const newCode = code + pressedNum;
-        if (newCode.length <= 4) {
+        if (newCode.length < 5) {
             setCode(newCode);
         }
-
         if (newCode.length === 4) {
-            checkSecret();
+            checkSecret(newCode);
         }
     };
 
@@ -61,7 +62,6 @@ const Secret = () => {
                 <li><button onClick={pressNum}>9</button></li>
                 <li><button onClick={pressNum}>0</button></li>
             </ul>
-            <p>{secret}</p>
         </div>
     )
 }

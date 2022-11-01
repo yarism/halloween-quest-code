@@ -37,7 +37,7 @@ const Secrets = () => {
             <ul className={styles.secrets}>
                 {suspects.map((secret, index) => {
                     return (
-                        <Link key={index} href={secret.locked ? `/code?id=${index}` : '#'}>
+                        <Link key={index} href={`/suspect?id=${index}`}>
                             <li key={index}>
                                 <h4>{secret.locked ? '🔒 ' : ''}Suspect #{index+1}</h4>
                                 <p className={secret.locked ? styles.text__blur : ''}>{secret.clue}</p>

@@ -5,7 +5,7 @@ const Back = () => {
     const router = useRouter();
 
     return (
-        <a onClick={() => router.back()} className={styles.back__button}>&lsaquo;</a>
+        <a onClick={() => router.push('/')} className={styles.back__button}>&lsaquo;</a>
     )
 }
 

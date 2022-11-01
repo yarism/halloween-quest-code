@@ -7,10 +7,10 @@ const Secret = () => {
     const router = useRouter();
     const { id } = router.query;
 
-    const storeLocally = (s) => {
+    const storeLocally = (imgKey) => {
         let suspects = JSON.parse(localStorage.getItem('suspects'));
         suspects[id] = {
-            clue: s,
+            imgKey: imgKey,
             locked: false
         };
         localStorage.setItem('suspects', JSON.stringify(suspects));
@@ -22,11 +22,9 @@ const Secret = () => {
             if (!response.ok) {
                 throw Error();
             }
-            const { secret } = await response.json();
-            storeLocally(secret);
-            if (!alert(secret)) {
-                router.push('/');
-            }
+            const { imgKey } = await response.json();
+            storeLocally(imgKey);
+            router.push(`/suspect?id=${id}`);
         } catch (error) {
             alert('Incorrect code');
             setCode('');

@@ -1,18 +1,26 @@
 import { useRouter } from 'next/router'
-import Link from 'next/link';
-import styles from '../../../styles/Secret.module.css';
+import Link from 'next/link'
+import { useState, useEffect } from 'react'
 
 const Suspect = () => {
+    const [imgKey, setImgKey] = useState('');
     const router = useRouter();
     const { id } = router.query;
     const suspect = parseInt(id) + 1;
 
+    useEffect(() => {
+        const suspects = JSON.parse(localStorage.getItem('suspects'));
+        if (suspects && id) {
+            setImgKey(suspects[id].imgKey);
+        }
+        //console.log(suspect)
+    }, [id]);
+
     return (
         <div>
             <h2>Suspect #{suspect}</h2>
-            <p>Can you find the hidden code?</p>
-            <Link href={`/img/${id}.png`}><img src={`/img/${id}.png`} width="100%" /></Link>
-            <Link href={`/code?id=${id}`}><button className={styles.cta__button}>Fill in code</button></Link>
+            {/* solve placeholder images so it doesnt jump... */}
+            <Link href={`/img/${imgKey}.png`}><img src={`/img/${imgKey}.png`} width="100%" background={"grey"} /></Link>
         </div>
     )
 }

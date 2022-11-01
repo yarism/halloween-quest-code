@@ -4,20 +4,16 @@ import styles from '../../../styles/Secret.module.css';
 
 const suspectablePeople = [
     {
-        locked: true,
-        clue: 'Thou shalt not pass'
+        locked: true
     },
     {
-        locked: true,
-        clue: 'Thou shalt not pass'
+        locked: true
     },
     {
-        locked: true,
-        clue: 'Thou shalt not pass'
+        locked: true
     },
     {
-        locked: true,
-        clue: 'Thou shalt not pass'
+        locked: true
     }
 ];
 
@@ -37,10 +33,11 @@ const Secrets = () => {
             <ul className={styles.secrets}>
                 {suspects.map((secret, index) => {
                     return (
-                        <Link key={index} href={`/suspect?id=${index}`}>
+                        <Link key={index} href={secret.locked ? `/code?id=${index}` : `/suspect?id=${index}`}>
                             <li key={index}>
                                 <h4>{secret.locked ? '🔒 ' : ''}Suspect #{index+1}</h4>
-                                <p className={secret.locked ? styles.text__blur : ''}>{secret.clue}</p>
+                                {secret.locked && <p className={secret.locked ? styles.text__blur : ''}>Thou shalt not pass</p>}
+                                {!secret.locked && <img src={`/img/1489.png`} width='100%' />}
                             </li>
                         </Link>
                     )

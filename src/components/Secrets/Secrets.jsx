@@ -37,7 +37,7 @@ const Secrets = () => {
                             <li key={index}>
                                 <h4>{secret.locked ? '🔒 ' : ''}Suspect #{index+1}</h4>
                                 {secret.locked && <p className={secret.locked ? styles.text__blur : ''}>Thou shalt not pass</p>}
-                                {!secret.locked && <img src={`/img/1489.png`} width='100%' />}
+                                {!secret.locked && <img src={`/img/${secret.imgKey}.png`} width='100%' />}
                             </li>
                         </Link>
                     )

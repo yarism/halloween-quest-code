@@ -30,7 +30,7 @@ const Secrets = () => {
     
     useEffect(() => {
         let locked = suspects.find(o => o.locked === true);
-        if (suspects.length && !locked) {
+        if (suspects.length === 4 && !locked) {
             setShowGoogleForm(true);
         }
     }, [suspects])

@@ -18,7 +18,7 @@ const Suspect = () => {
 
     return (
         <div>
-            <h2>Suspect #{suspect}</h2>
+            <h2>Misstänkt #{suspect}</h2>
             {/* solve placeholder images so it doesnt jump... */}
             <Link href={`/img/${imgKey}.png`}><img src={`/img/${imgKey}.png`} width="100%" background={"grey"} /></Link>
         </div>

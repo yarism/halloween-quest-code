@@ -43,6 +43,7 @@ const Secrets = () => {
                     )
                 })}
             </ul>
+            <h3 style={{ textAlign: 'center', fontSize: '40px' }}>🎃👻🎃</h3>
         </div>
     )
 }

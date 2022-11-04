@@ -30,7 +30,7 @@ const Secrets = () => {
     
     useEffect(() => {
         let locked = suspects.find(o => o.locked === true);
-        if (suspects.length === 4 && !locked) {
+        if (suspects.length && !locked) {
             setShowGoogleForm(true);
         }
     }, [suspects])
@@ -52,7 +52,7 @@ const Secrets = () => {
                 })}
             </ul>
             <h3 style={{ textAlign: 'center', fontSize: '40px' }}>🎃👻🎃</h3>
-            <a className={styles.gform__btn} href="https://docs.google.com/forms/d/e/1FAIpQLSeODdEbDpfuT4gzWPxeCt079Md7SauP2vDRede6hJ9sfg5t-A/viewform?usp=sf_link" target="_blank" rel="noreferrer">Gissa mördaren!</a>
+            {showGoogleForm && <a className={styles.gform__btn} href="https://docs.google.com/forms/d/e/1FAIpQLSeODdEbDpfuT4gzWPxeCt079Md7SauP2vDRede6hJ9sfg5t-A/viewform?usp=sf_link" target="_blank" rel="noreferrer">Gissa mördaren!</a>}
         </div>
     )
 }

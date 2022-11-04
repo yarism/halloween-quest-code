@@ -29,13 +29,13 @@ const Secrets = () => {
 
     return (
         <div className={styles.container}>
-            <h2>Suspects</h2>
+            <h2>Misstänkta</h2>
             <ul className={styles.secrets}>
                 {suspects.map((secret, index) => {
                     return (
                         <Link key={index} href={secret.locked ? `/code?id=${index}` : `/suspect?id=${index}`}>
                             <li key={index}>
-                                <h4>{secret.locked ? '🔒 ' : ''}Suspect #{index+1}</h4>
+                                <h4>{secret.locked ? '🔒 ' : ''}Misstänkt #{index+1}</h4>
                                 {secret.locked && <p className={secret.locked ? styles.text__blur : ''}>Thou shalt not pass</p>}
                                 {!secret.locked && <img src={`/img/${secret.imgKey}.png`} width='100%' />}
                             </li>

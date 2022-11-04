@@ -26,7 +26,7 @@ const Secret = () => {
             storeLocally(imgKey);
             router.push(`/suspect?id=${id}`);
         } catch (error) {
-            alert('Incorrect code');
+            alert('👻 - Försök igen!');
             setCode('');
         }
     };

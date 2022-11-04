@@ -9,10 +9,8 @@ const Secret = () => {
 
     const storeLocally = (imgKey) => {
         let suspects = JSON.parse(localStorage.getItem('suspects'));
-        suspects[id] = {
-            imgKey: imgKey,
-            locked: false
-        };
+        suspects[id].imgKey = imgKey;
+        suspects[id].locked = false;
         localStorage.setItem('suspects', JSON.stringify(suspects));
     };
 

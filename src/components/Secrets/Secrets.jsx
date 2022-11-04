@@ -4,15 +4,19 @@ import styles from '../../../styles/Secret.module.css';
 
 const suspectablePeople = [
     {
+        name: 'Matlagningskursdeltagaren',
         locked: true
     },
     {
+        name: 'Konsertbesökaren',
         locked: true
     },
     {
+        name: 'Tågåkaren',
         locked: true
     },
     {
+        name: 'Hemmasittaren',
         locked: true
     }
 ];
@@ -43,7 +47,7 @@ const Secrets = () => {
                     return (
                         <Link key={index} href={secret.locked ? `/code?id=${index}` : `/suspect?id=${index}`}>
                             <li key={index}>
-                                <h4>{secret.locked ? '🔒 ' : ''}Misstänkt #{index+1}</h4>
+                                <h4>{secret.locked ? '🔒 ' : ''}Misstänkt #{index+1} - {secret.name}</h4>
                                 {secret.locked && <p className={secret.locked ? styles.text__blur : ''}>Thou shalt not pass</p>}
                                 {!secret.locked && <img src={`/img/${secret.imgKey}.png`} width='100%' />}
                             </li>

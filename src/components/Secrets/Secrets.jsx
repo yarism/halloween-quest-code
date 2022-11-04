@@ -30,12 +30,10 @@ const Secrets = () => {
     
     useEffect(() => {
         let locked = suspects.find(o => o.locked === true);
-        console.log(locked);
         if (suspects.length && !locked) {
-            console.log("unlock the url");
             setShowGoogleForm(true);
         }
-    }, [suspects])
+    }, [])
 
     return (
         <div className={styles.container}>

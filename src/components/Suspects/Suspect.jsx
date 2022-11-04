@@ -13,7 +13,6 @@ const Suspect = () => {
         if (suspects && id) {
             setImgKey(suspects[id].imgKey);
         }
-        //console.log(suspect)
     }, [id]);
 
     return (

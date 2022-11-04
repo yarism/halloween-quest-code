@@ -19,6 +19,7 @@ const suspectablePeople = [
 
 const Secrets = () => {
     const [suspects, setSuspects] = useState([]);
+    const [showGoogleForm, setShowGoogleForm] = useState(false);
 
     useEffect(() => {
         if (!localStorage.getItem('suspects')) {
@@ -26,6 +27,15 @@ const Secrets = () => {
         }
         setSuspects(JSON.parse(localStorage.getItem('suspects')));
     }, []);
+    
+    useEffect(() => {
+        let locked = suspects.find(o => o.locked === true);
+        console.log(locked);
+        if (suspects.length && !locked) {
+            console.log("unlock the url");
+            setShowGoogleForm(true);
+        }
+    }, [suspects])
 
     return (
         <div className={styles.container}>
@@ -44,6 +54,7 @@ const Secrets = () => {
                 })}
             </ul>
             <h3 style={{ textAlign: 'center', fontSize: '40px' }}>🎃👻🎃</h3>
+            <a className={styles.gform__btn} href="https://docs.google.com/forms/d/e/1FAIpQLSeODdEbDpfuT4gzWPxeCt079Md7SauP2vDRede6hJ9sfg5t-A/viewform?usp=sf_link" target="_blank">Gissa mördaren!</a>
         </div>
     )
 }
